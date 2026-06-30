@@ -89,10 +89,5 @@ Rajshahi University of Engineering & Technology (RUET)
 
 ## 🚀 Running Locally
 
-Clone the repository:
 
-```bash
-git clone https://github.com/Saidulmridul/portfolio-md-saidul-islam-mridul.git
-```
-
-Open `index.html` in your browser.
+Open (https://saidulmridul.github.io/portfolio-md-saidul-islam-mridul/) in your browser.
