@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Md. Saidul Islam Mridul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:        #0A0F1E;
+  --bg2:       #0F1629;
+  --card:      #141B30;
+  --border:    #1E2A45;
+  --teal:      #00D4C8;
+  --teal-dim:  rgba(0,212,200,0.12);
+  --white:     #F8F9FF;
+  --muted:     #8892A4;
+  --accent2:   #7C6AF7;
+  --font-d:    'Sora', sans-serif;
+  --font-b:    'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-b);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.page { display: none; animation: fadein 0.4s ease; }
+.page.active { display: block; }
+@keyframes fadein { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  background: rgba(10,15,30,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 64px;
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--teal);
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 6px; }
+.nav-links button {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-family: var(--font-b);
+  font-size: 0.875rem; font-weight: 500;
+  padding: 8px 14px; border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-links button:hover { color: var(--white); background: var(--teal-dim); }
+.nav-links button.active { color: var(--teal); background: var(--teal-dim); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 40px 5vw;
+  display: flex; flex-wrap: wrap; gap: 24px;
+  justify-content: space-between; align-items: center;
+  margin-top: 80px;
+}
+.footer-info { display: flex; flex-direction: column; gap: 6px; }
+.footer-info span { font-size: 0.85rem; color: var(--muted); }
+.footer-info strong { color: var(--white); font-size: 0.9rem; }
+.footer-contact { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.footer-contact a {
+  font-size: 0.85rem; color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-contact a:hover { color: var(--teal); }
+
+/* ─── SHARED SECTION ─── */
+.section-wrap { max-width: 1100px; margin: 0 auto; padding: 100px 5vw 0; }
+.section-label {
+  font-family: var(--font-d);
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--white); margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 1rem; color: var(--muted); line-height: 1.7;
+  max-width: 620px; margin-bottom: 48px;
+}
+.divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 26px; border-radius: 10px;
+  font-family: var(--font-b); font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.22s;
+}
+.btn-primary {
+  background: var(--teal); color: #0A0F1E;
+}
+.btn-primary:hover { background: #00bdb2; transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 64px 5vw 0;
+  position: relative; overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,200,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,200,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-inner{
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left:30%;
+    padding-right: 8%;
+} 
+
+.hero-photo-wrap {
+  position: relative; flex-shrink: 0;
+}
+.hero-photo {
+  width: 230px; height: 280px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 0.85rem; text-align: center;
+}
+.hero-photo-glow {
+  position: absolute; inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--teal), var(--accent2));
+  z-index: -1; opacity: 0.35;
+  filter: blur(12px);
+}
+.hero-text{
+    max-width:700px;
+    margin-left: 350px;
+} { flex: 1; min-width: 280px; }
+.hero-greeting {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--teal); letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.hero-name {
+  font-family: var(--font-d);
+  font-size: 32px;
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-role{
+
+    font-size:24px;
+    color:#9ca7bf;
+    margin:20px 0;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-role {
+  font-family: var(--font-d);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 300; color: var(--muted);
+  margin-bottom: 20px;
+}
+.hero-bio{
+
+    max-width:650px;
+
+    line-height:1.8;
+
+    font-size:16px;
+
+    color:#9ea9c3;
+}
+.hero-btns{
+    display:flex;
+    gap:20px;
+}
+
+.footer{
+    padding:40px;
+}
+
+/* Paste this AFTER EVERYTHING */
+
+.hero-bg-photo{
+    position:absolute;
+    top:80px;
+    left:-50px;
+    width:60%;
+    height:100%;
+    background:url("photo.jpeg") center 0% no-repeat;
+    background-size:cover;
+    opacity:.7  0;
+    filter:brightness(.55);
+    z-index:1;
+
+    -webkit-mask-image:linear-gradient(to right, black 0%, black 60%, transparent 100%);
+    mask-image:linear-gradient(to right, black 0%, black 60%, transparent 100%);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to right,
+        rgba(8,12,25,.35),
+        rgba(8,12,25,.55),
+        rgba(8,12,25,.80),
+        rgba(8,12,25,.95)
+    );
+    z-index:2;
+}
+
+/* Highlights strip */
+.highlights { max-width: 1100px; margin: 0 auto; padding: 80px 5vw 0; }
+.highlights-title {
+  font-family: var(--font-d);
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 32px;
+}
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.highlight-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  cursor: pointer; transition: all 0.25s;
+}
+.highlight-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,212,200,0.1);
+}
+.hc-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--teal-dim); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 16px; font-size: 1.3rem;
+}
+.hc-tag {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 8px;
+}
+.hc-title {
+  font-family: var(--font-d); font-size: 1rem; font-weight: 600;
+  color: var(--white); margin-bottom: 8px;
+}
+.hc-desc { font-size: 0.855rem; color: var(--muted); line-height: 1.65; }
+
+/* ═══════════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════════ */
+.edu-timeline { display: flex; flex-direction: column; gap: 0; }
+.edu-item {
+  display: flex; gap: 28px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: 15px; top: 32px; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.edu-item:last-child::before { display: none; }
+.edu-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--teal);
+  background: var(--bg);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.edu-dot-inner {
+  width: 10px; height: 10px;
+  border-radius: 50%; background: var(--teal);
+}
+.edu-content {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px 28px; flex: 1;
+}
+.edu-period {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+}
+.edu-institution {
+  font-family: var(--font-d); font-size: 1.1rem; font-weight: 700;
+  color: var(--white); margin-bottom: 4px;
+}
+.edu-degree { font-size: 0.9rem; color: var(--muted); margin-bottom: 14px; }
+.edu-results { display: flex; flex-wrap: wrap; gap: 10px; }
+.edu-result-pill {
+  background: var(--teal-dim); border: 1px solid rgba(0,212,200,0.2);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 0.8rem; font-weight: 500; color: var(--teal);
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px; margin-top: 32px;
+}
+.skill-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px;
+}
+.skill-card-title {
+  font-family: var(--font-d); font-size: 0.85rem; font-weight: 600;
+  color: var(--teal); margin-bottom: 12px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 0.78rem; color: var(--muted);
+}
+
+/* ═══════════════════════════════════════
+   PROJECTS / RESEARCH / CERTIFICATIONS
+═══════════════════════════════════════ */
+.cards-list { display: flex; flex-direction: column; gap: 40px; }
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  transition: border-color 0.25s;
+}
+.project-card:hover { border-color: rgba(0,212,200,0.4); }
+.project-media {
+  width: 100%; height: 280px;
+  background: var(--bg2);
+  overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+.project-media img, .project-media video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.media-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.media-placeholder-icon { font-size: 2.5rem; opacity: 0.3; }
+.project-body { padding: 32px; }
+.project-number {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 8px;
+}
+.project-title {
+  font-family: var(--font-d); font-size: 1.4rem; font-weight: 700;
+  color: var(--white); margin-bottom: 14px; line-height: 1.25;
+}
+.project-desc {
+  font-size: 0.9rem; color: var(--muted); line-height: 1.75;
+  margin-bottom: 24px;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.project-tag {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 5px 12px;
+  font-size: 0.78rem; color: var(--muted);
+}
+.project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.proj-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.84rem; font-weight: 500; color: var(--teal);
+  padding: 8px 16px; border: 1px solid rgba(0,212,200,0.3);
+  border-radius: 8px; transition: all 0.2s;
+}
+.proj-link:hover { background: var(--teal-dim); }
+
+/* Cert card variant */
+.cert-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.cert-card:hover { border-color: rgba(0,212,200,0.4); transform: translateY(-4px); }
+.cert-media {
+  width: 100%; height: 200px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.cert-media img { width: 100%; height: 100%; object-fit: cover; }
+.cert-body { padding: 24px; }
+.cert-issuer {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+}
+.cert-title {
+  font-family: var(--font-d); font-size: 1rem; font-weight: 700;
+  color: var(--white); margin-bottom: 8px; line-height: 1.3;
+}
+.cert-date { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; }
+.cert-desc { font-size: 0.855rem; color: var(--muted); line-height: 1.65; }
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* ═══════════════════════════════════════
+   CONTACT PAGE
+═══════════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-bottom: 48px;
+}
+.contact-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  display: flex; align-items: flex-start; gap: 18px;
+  transition: all 0.25s;
+}
+.contact-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,212,200,0.08);
+}
+.contact-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--teal-dim); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.contact-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 4px;
+}
+.contact-value {
+  font-size: 0.9rem; color: var(--white); font-weight: 500; word-break: break-all;
+}
+.contact-sub { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 680px) {
+  .hero-inner { gap: 36px; }
+  .hero-photo { width: 160px; height: 200px; }
+  nav { padding: 0 4vw; }
+  .nav-links button { padding: 7px 10px; font-size: 0.8rem; }
+  .footer-contact { align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    ⬢ Mridul
+</div> 
+  <div class="nav-links">
+    <button class="active" onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('projects')">Projects</button>
+    <button onclick="showPage('research')">Research</button>
+    <button onclick="showPage('certifications')">Certifications</button>
+    <button onclick="showPage('contact')">Contact</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg-photo"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-inner">
+
+      <!-- ✏️ Replace the img src with your actual photo path e.g. src="photo.jpg" -->
+      
+
+      <div class="hero-text">
+        <p class="hero-greeting">👋 Hello, I'm</p>
+        <!-- ✏️ Md. Saidul Islam Mridul -->
+        <h1 class="hero-name">Md. Saidul Islam Mridul<span class="cursor"></span></h1>
+        <!-- ✏️ Your role / headline -->
+        <p class="hero-role"></p>
+        <!-- ✏️ 2–3 sentence bio -->
+        <p class="hero-bio">
+         A passionate Industrial & Production Engineering student at RUET with a passion for  supply chain optimization, Logistics and data analytics.
+        </p>
+        <div class="hero-btns">
+          <a href="CV.pdf" target="_blank" class="btn btn-primary">⬇ Download CV</a>
+          <button class="btn btn-outline" onclick="showPage('contact')">✉ Contact Me</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <p class="highlights-title">↓ &nbsp;Profile Highlights</p>
+    <div class="highlights-grid">
+
+      <!-- ✏️ HIGHLIGHT CARD 1 — Featured Project -->
+      <div class="highlight-card" onclick="showPage('projects')">
+        <div class="hc-icon">🚀</div>
+        <p class="hc-tag">Featured Project</p>
+        <!-- ✏️ Your top project name -->
+        <p class="hc-title">Samsung Supply Chain & Logistics Dashboard</p>
+        <!-- ✏️ One-line description -->
+        <p class="hc-desc">Interactive Power BI dashboard analyzing Samsung's supply chain and logistics performance through inventory, shipments, supplier lead time, revenue, and operational KPIs.</p>
+      </div>
+
+      <!-- ✏️ HIGHLIGHT CARD 2 — Research -->
+      <div class="highlight-card" onclick="showPage('research')">
+        <div class="hc-icon">🔬</div>
+        <p class="hc-tag">Latest Research</p>
+        <!-- ✏️ Your research title -->
+        <p class="hc-title">Task Allocation and Optimal Labor Cost in Garment Manufacturing: A Case Study</p>
+        <p class="hc-desc"></p>
+      </div>
+
+      <!-- ✏️ HIGHLIGHT CARD 3 — Certification -->
+      <div class="highlight-card" onclick="showPage('certifications')">
+        <div class="hc-icon">🏅</div>
+        <p class="hc-tag">Recent Certification</p>
+        <!-- ✏️ Your top cert -->
+        <p class="hc-title">Aspire Leadership Program</p>
+        <p class="hc-desc">Aspire Institue · Dec 25</p>
+      </div>
+
+      <!-- ✏️ HIGHLIGHT CARD 4 — About / Education -->
+      <div class="highlight-card" onclick="showPage('about')">
+        <div class="hc-icon">🎓</div>
+        <p class="hc-tag">Education</p>
+        <!-- ✏️ Your current university -->
+        <p class="hc-title">Rajshahi University of Engineering & Technology, Rajshahi</p>
+        <p class="hc-desc">Bsc in Industrial & Production Engineering. CGPA: 3.74 / 4.00</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer on home -->
+  <footer>
+    <div class="footer-info">
+      <!-- ✏️ Your name and location -->
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <!-- ✏️ Your contact details -->
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="section-wrap">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Education & Background</h2>
+    <!-- ✏️ Short intro paragraph -->
+    <p class="section-desc">
+      Here's a snapshot of my academic journey — where I've been, where I am, and what I've achieved along the way.
+    </p>
+
+    <div class="edu-timeline">
+
+      <!-- ─── EDUCATION ITEM 1 (Current) ─── -->
+      <!-- ✏️ Fill in your current institution -->
+      <div class="edu-item">
+        <div class="edu-dot"><div class="edu-dot-inner"></div></div>
+        <div class="edu-content">
+          <p class="edu-period">2022 — Present (Ongoing)</p>
+          <p class="edu-institution">Rajshahi University of Engineering & Technology, Rajshahi</p>
+          <p class="edu-degree">BSc in Industrial & Production Engineering</p>
+          <div class="edu-results">
+            <span class="edu-result-pill">CGPA: 3.74 / 4.00 upto 6th semester</span>
+            <span class="edu-result-pill">Expected Graduation: 2027</span>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── EDUCATION ITEM 2 (Previous) ─── -->
+      <!-- ✏️ Fill in your previous institution -->
+      <div class="edu-item">
+        <div class="edu-dot"><div class="edu-dot-inner"></div></div>
+        <div class="edu-content">
+          <p class="edu-period">2019 — 2021</p>
+          <p class="edu-institution">Milestone College, Uttara</p>
+          <p class="edu-degree">HSC </p>
+          <div class="edu-results">
+            <span class="edu-result-pill">GPA: 5.00 / 5.00</span>
+            <span class="edu-result-pill">Science Group</span>
+            <span class="edu-result-pill"> A+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── EDUCATION ITEM 3 (Optional / Add more if needed) ─── -->
+      <!-- ✏️ Fill in or delete this block -->
+      <div class="edu-item">
+        <div class="edu-dot"><div class="edu-dot-inner"></div></div>
+        <div class="edu-content">
+          <p class="edu-period">2011 — 2019</p>
+          <p class="edu-institution">Shafiuddin Sarker Academy and college, Tongi</p>
+          <p class="edu-degree">SSC </p>
+          <div class="edu-results">
+            <span class="edu-result-pill">GPA: 5.00/ 5.00</span>
+            <span class="edu-result-pill">Science Group</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Skills -->
+    <p class="section-label">Skills & Tools</p>
+    <h2 class="section-title">What I Work With</h2>
+    <div class="skills-grid">
+
+      <!-- ✏️ Customize each skill category and tags -->
+      <div class="skill-card">
+        <p class="skill-card-title">💻 Programming</p>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">C</span>
+         <span class="skill-tag">javascript</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Data Analysis</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Advanced Excel</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">python</span>
+          
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Optimisation tools</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Cplex</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Gurobi</span>
+          
+        </div>
+      </div>
+
+    
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PROJECTS PAGE
+════════════════════════════════════════════════ -->
+<div id="page-projects" class="page">
+  <div class="section-wrap">
+    <p class="section-label">My Work</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-desc">A selection of collaborative academic engineering projects and custom-built professional dashboards</p>
+
+    <!-- TAB BUTTONS -->
+    <div style="display:flex; gap:10px; margin-bottom:40px; flex-wrap:wrap;">
+
+      <button id="tab-dataanalysis" onclick="switchTab('dataanalysis')"
+        style="padding:10px 24px; border-radius:10px; border:1.5px solid #1E2A45;
+               background:rgba(0,212,200,0.12); color:#00D4C8;
+               font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">
+        📊 Data Analysis Projects
+      </button>
+      <button id="tab-academic" onclick="switchTab('academic')"
+        style="padding:10px 24px; border-radius:10px; border:1.5px solid #00D4C8;
+               background:transparent; color:#8892A4;
+               font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer;">
+        🎓 Academic Projects
+      </button>
+      
+    </div>
+
+    <!-- ACADEMIC PROJECTS -->
+    <div id="tab-content-academic" class="cards-list" style="display:none;">
+
+      <!-- ─── PROJECT 1 ─── -->
+      <!-- ✏️ Fill in all the details below -->
+      <div class="project-card">
+        <div class="project-media">
+          <!-- ✏️ Option A: Image — replace src with your screenshot path e.g. src="projects/project1.png" -->
+          <!-- ✏️ Option B: Video — uncomment the video tag and comment out the img tag -->
+          <img src="laptop.jpeg" alt="Project 1 screenshot"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">🖼</div>
+           
+          </div>
+          <!-- <video controls src="projects/project1.mp4"></video> -->
+        </div>
+        <div class="project-body">
+          <p class="project-number">PROJECT 01</p>
+          <!-- ✏️ Project title -->
+          <h3 class="project-title">Smart Laptop Cooling Stand</h3>
+          <!-- ✏️ Description of the project — what it does, how you built it, what problem it solves -->
+          <p class="project-desc">
+            This smart cooling stand automatically adjusts fan speed based on real-time thermal sensor data, ensuring optimal performance and protection against overheating. It balances efficient, responsive cooling with quiet operation, keeping your laptop stable and cool during any workload. Key features: Quite cooling, RGB, Lightweight, Ergonomic design, Phone stand
+          </p>
+          <!-- ✏️ Tech tags -->
+          <div class="project-tags">
+            <span class="project-tag">product design</span>
+            <span class="project-tag">cost analysis</span>
+            <span class="project-tag">market research</span>
+            <span class="project-tag">stress analysis</span>
+          </div>
+          <!-- ✏️ Links — replace href with real URLs, or delete a link if not applicable -->
+          <div class="project-links">
+            <a href="https://github.com/https://www.linkedin.com/in/md-saidul-islam-mridul//project1" target="_blank" class="proj-link">⌥ GitHub</a>
+            <a href="https://project1-demo.com" target="_blank" class="proj-link">↗ Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PROJECT 2 ─── -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="TIMESTUDY.png" alt="Project 2 screenshot"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">🖼</div>
+           
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-number">PROJECT 02</p>
+          <h3 class="project-title">Time Study Challenge</h3>
+          <p class="project-desc">
+            This project utilized a time study of a T-shirt assembly line to analyze cycle times and Standard Minute Values, successfully identifying and mitigating production bottlenecks. By strategically reallocating manpower and balancing the line's capacity, the study improved overall efficiency while reducing the total workforce requirement from 34 to 32.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Line Balancing</span>
+            <span class="project-tag">SMV</span>
+            <span class="project-tag">Efficiency</span>
+            <span class="project-tag">Production</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" class="proj-link">⌥ GitHub</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PROJECT 3 ─── -->
+      
+
+      <!-- ✏️ Copy a project card block above to add more projects -->
+
+ <!-- ✏️ Copy a project card block above to add more academic projects -->
+
+    </div>
+
+    <!-- DATA ANALYSIS PROJECTS -->
+    <div id="tab-content-dataanalysis" class="cards-list">
+
+      <!-- ─── DATA ANALYSIS PROJECT 1 ─── -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="samsung.png" alt="Data Project 1"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">📊</div>
+            
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-number">DATA ANALYSIS · 01</p>
+          <h3 class="project-title">Samsung Supply Chain & Logistics Dashboard</h3>
+          <p class="project-desc">
+            Interactive Power BI dashboard analyzing Samsung's supply chain and logistics performance through inventory, shipments, supplier lead time, revenue, and operational KPIs.
+          <div class="project-tags">
+            <span class="project-tag">PowerBI</span>
+            <span class="project-tag">Data Modelling</span>
+            <span class="project-tag">DAX</span>
+            
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Saidulmridul/Samsung-Dashboard" target="_blank" class="proj-link">⌥ GitHub</a>
+           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7447269540771844096/" target="_blank" class="proj-link">⌥ LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── DATA ANALYSIS PROJECT 2 ─── -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="Uber.png" alt="Data Project 2"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">📊</div>
+           
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-number">DATA ANALYSIS · 02</p>
+          <h3 class="project-title">Uber Dashboard</h3>
+          <p class="project-desc">
+            Interactive Power BI dashboard analyzing Uber booking trends, revenue, customer satisfaction, and operational performance using DAX and Power Query.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">PowerBI</span>
+            <span class="project-tag">Power query</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Saidulmridul/Uber-Dashboard" target="_blank" class="proj-link">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7429864830888751104/" target="_blank" class="proj-link">⌥ LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-media">
+          <img src="purchase.png" alt="Data Project 3"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">📊</div>
+           
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-number">DATA ANALYSIS · 03</p>
+          <h3 class="project-title">Purchase-Shipping Alanysis ashboard</h3>
+          <p class="project-desc">
+            Interactive excel dashboard analyzing purchasing trends, spending patterns, product categories, seasonal demand, and payment methods through dynamic visualizations and KPIs.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Excel</span>
+            <span class="project-tag">Power pivot</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Saidulmridul/PURCHASE-SHIPPING-ANALYSIS-DASHBOARD" target="_blank" class="proj-link">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7369807204750667777/" target="_blank" class="proj-link">⌥ LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <!-- ✏️ Copy a project card block above to add more data analysis projects -->
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RESEARCH PAGE
+════════════════════════════════════════════════ -->
+<div id="page-research" class="page">
+  <div class="section-wrap">
+    <p class="section-label">Academic</p>
+    <h2 class="section-title">Research</h2>
+    <p class="section-desc">My contributions to academic research — papers, studies, and ongoing investigations.</p>
+
+    <div class="cards-list">
+
+      <!-- ─── RESEARCH 1 ─── -->
+      <!-- ✏️ Fill in your research details -->
+      <div class="project-card">
+        <div class="project-media">
+          <!-- ✏️ Use an image of the paper/poster, or a relevant figure from the paper -->
+          <img src="case.jpeg" alt="Case Study"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">📄</div>
+            <span>Add paper image or figure here</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <!-- ✏️ Status: Published / Under Review / In Progress / Conference Presentation -->
+          <p class="project-number">Case Study · 2026</p>
+          <h3 class="project-title">Task Allocation and Optimal Labor Cost in Garment Manufacturing: A Case Study </h3>
+          <p class="project-desc">
+            This case study applies a binary integer programming model to optimize task allocation within a specific garment manufacturing environment, aiming to minimize total labor costs while meeting strict production constraints.The model allocates task to operator based on their skillset and salary to minimize overall production cost.
+          </p>
+          <div class="project-tags">
+             
+            <span class="project-tag">Apparel Manufacturing</span>
+            <span class="project-tag">RMG</span>
+            <span class="project-tag">Line Balancing</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" class="proj-link">📄 Read Paper</a>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RESEARCH 2 ─── -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="RESEARCH2_IMAGE.png" alt="Thesis"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="media-placeholder" style="display:none">
+            <div class="media-placeholder-icon">📄</div>
+            <span></span>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-number">Thesis · ongoing · 2026</p>
+          <h3 class="project-title">Order quantity optimization model for perishable products under continuous review (Q, r) inventory policy with stochastic demand and stochastic lead time</h3>
+          <p class="project-desc">
+             This research optimizes inventory management for perishable products using a continuous review (Q, r) policy, developing a model that minimizes costs by accounting for stochastic demand, variable lead times, and product expiration risks.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Inventory</span>
+            <span class="project-tag">Perishable Products</span>
+            <span class="project-tag">Evolution Strategy</span>
+          </div>
+          <div class="project-links">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ✏️ Copy a research card block above to add more -->
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CERTIFICATIONS PAGE
+════════════════════════════════════════════════ -->
+<div id="page-certifications" class="page">
+  <div class="section-wrap">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-desc">Courses, exams, and credentials I've earned to sharpen my skills.</p>
+
+    <div class="certs-grid">
+
+      <!-- ─── CERT 1 ─── -->
+      <!-- ✏️ Fill in each certification -->
+      <a href="Aspire-Certificate.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <!-- ✏️ Certificate image/badge — replace src -->
+          <img src="The-Aspire-Leaders-Program.jpg" alt="Certification 1"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <!-- ✏️ Issuing organization -->
+          <p class="cert-issuer">Aspire Institute</p>
+          <!-- ✏️ Certificate name -->
+          <p class="cert-title">Aspire Leadership Program (cohort-5)</p>
+          <!-- ✏️ Date completed -->
+          <p class="cert-date">Completed: December 2025</p>
+          <!-- ✏️ Brief description -->
+          <p class="cert-desc">Completed a selective leadership program designed by Harvard faculty, focusing on cross-cultural communication, digital strategy, and community impact.</p>
+        </div>
+      </div> </a>
+
+      <!-- ─── CERT 2 ─── -->
+      <a href="Google project management.pdf" target="_blank">
+<div class="cert-card">
+        <div class="cert-media">
+          <img src="google project management.png" alt="Certification 2"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">Google · Coursera</p>
+          <p class="cert-title">Google Project Management</p>
+          <p class="cert-date">Completed: September 2025</p>
+          <p class="cert-desc">Learned end-to-end project life cycles, Agile/Scrum methodologies, risk management, and strategic planning. Gained hands-on experience in project documentation, traditional project management, and utilizing team collaboration tools.</p>
+        </div>
+      </div></a>
+
+      <!-- ─── CERT 3 ─── -->
+      <a href="Supply Chain Logistics.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="Rutgers.png" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">Rutgers University· Coursera</p>
+          <p class="cert-title">Supply Chain Logistics</p>
+          <p class="cert-date">Completed: September 2025</p>
+          <p class="cert-desc">Mastered the fundamentals of moving goods efficiently by optimizing transportation, warehousing, inventory management, and logistics network design.</p>
+        </div>
+      </div></a>
+
+      <!-- ─── CERT 4 ─── -->
+      <a href="SC planning.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="SC planning.png" alt="Certification 4"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer"> University of California, Irvine · Coursera </p>
+          <p class="cert-title">Supply Chain Planning</p>
+          <p class="cert-date">Completed: August 2025</p>
+          <p class="cert-desc">learned to interconnect demand planning, supply planning, and constrained forecasting while measuring operational results for continuous improvement. Additionally, you gained practical skills in using Excel to analyze historical data and accurately quantify future supply chain needs.</p>
+        </div>
+      </div></a>
+     <!-- ─── CERT 5 ─── -->
+      <a href="Agile Approaches.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="Duke.jpg" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">Coursera</p>
+          <p class="cert-title">Agile Approaches for Modern Leadership</p>
+          <p class="cert-date">Completed: August 2025</p>
+          <p class="cert-desc">Learned how to align organizational purpose with strategy, build a culture of adaptability, and empower resilient, collaborative teams to handle changing market demands.</p>
+        </div>
+      </div></a>
+       <!-- ─── CERT 6 ─── -->
+      <a href="Leverage Data Science for.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="SC planning.png" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">University of California, Irvine · Coursera</p>
+          <p class="cert-title">Leverage Data Science for a More Agile Supply Chain</p>
+          <p class="cert-date">Completed: August 2025</p>
+          <p class="cert-desc">Learned to apply data science techniques such as demand forecasting, inventory management, and the newsvendor model to turn raw data into actionable supply chain decisions.</p>
+        </div>
+      </div></a><!-- ✏️ Copy a cert card block above to add more certifications -->
+ <!-- ─── CERT 7 ─── -->
+      <a href="Advanced Business Analytics.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="jhu.jpg" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">Johns Hopkins University · Coursera</p>
+          <p class="cert-title">Advanced Business Analytics: Excel Optimization & Simulation</p>
+          <p class="cert-date">Completed: September 2025</p>
+          <p class="cert-desc">Gained practical skills in data-driven decision-making, resource allocation, logistics, and operational analysis to optimize business performance.</p>
+        </div>
+      </div></a>
+<!-- ─── CERT 8  ─── -->
+      <a href="ss_White_Belt_Certification.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="ss.png" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">Council For Six Sigma Certification</p>
+          <p class="cert-title">Six Sigma white belt</p>
+          <p class="cert-date">Completed: August 2025</p>
+          <p class="cert-desc">Masteres the foundational principles of reducing process variation and eliminating waste to improve quality and efficiency. Understood five-step DMAIC problem-solving framework and gained the skills of continuous improvement.</p>
+        </div>
+      </div></a>
+<!-- ─── CERT 9  ─── -->
+      <a href="Excel Basics for Data Analysis.pdf" target="_blank">
+      <div class="cert-card">
+        <div class="cert-media">
+          <img src="ibm.jpg" alt="Certification 3"
+               onerror="this.outerHTML='<div style=\'width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2);\'>🏅</div>'">
+        </div>
+        <div class="cert-body">
+          <p class="cert-issuer">IBM · Coursera</p>
+          <p class="cert-title">Excel Basics for Data Analysis</p>
+          <p class="cert-date">Completed: September 2025</p>
+          <p class="cert-desc">I have gained a solid foundation in Excel for data analysis, enabling me to confidently navigate, enter, and use formulas in spreadsheets. I have also learned how to effectively import and clean data using quality techniques.</p>
+        </div>
+      </div></a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="section-wrap">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact Me</h2>
+    <!-- ✏️ Short message -->
+    <p class="section-desc">I'm always open to new opportunities, collaborations, or just a good conversation. Reach out through any of the channels below.</p>
+
+    <div class="contact-grid">
+
+      <!-- ✏️ Replace all contact details below -->
+      <a href="mailto:mridul.ruetipe21@gmail.com" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">📧</div>
+        <div>
+          <p class="contact-label">Email</p>
+          <p class="contact-value">mridul.ruetipe21@gmail.com</p>
+          <p class="contact-sub"></p>
+        </div>
+      </a>
+
+      <a href="tel:+1234567890" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">📱</div>
+        <div>
+          <p class="contact-label">Phone</p>
+          <p class="contact-value">+8801632206191</p>
+          <p class="contact-sub"></p>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">💼</div>
+        <div>
+          <p class="contact-label">LinkedIn</p>
+          <p class="contact-value">Md Saidul Islam Mridul</p>
+          <p class="contact-sub">Let's connect professionally</p>
+        </div>
+      </a>
+
+      <a href="https://github.com/Saidulmridul" target="_blank" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">⌥</div>
+        <div>
+          <p class="contact-label">GitHub</p>
+          <p class="contact-value">Md Saidul Islam Mridul</p>
+          <p class="contact-sub">see my projects</p>
+        </div>
+      </a>
+
+      <!-- ✏️ Optional: Add more contact options below (Twitter/X, ResearchGate, Google Scholar etc.) -->
+      <!--
+      <a href="https://twitter.com/yourhandle" target="_blank" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">🐦</div>
+        <div>
+          <p class="contact-label">Twitter / X</p>
+          <p class="contact-value">@yourhandle</p>
+          <p class="contact-sub">Follow for updates</p>
+        </div>
+      </a>
+
+      <a href="https://scholar.google.com/citations?user=YOURID" target="_blank" class="contact-card" style="text-decoration:none">
+        <div class="contact-icon">🔬</div>
+        <div>
+          <p class="contact-label">Google Scholar</p>
+          <p class="contact-value">Your Research Profile</p>
+          <p class="contact-sub">See my publications</p>
+        </div>
+      </a>
+      -->
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-info">
+      <strong>Md. Saidul Islam Mridul</strong>
+      <span>📍 Rajshahi, Bangladesh</span>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:mridul.ruetipe21@gmail.com">mridul.ruetipe21@gmail.com</a>
+      <a href="tel:+1234567890">+8801632206191</a>
+      <a href="https://www.linkedin.com/in/md-saidul-islam-mridul/" target="_blank">
+    LinkedIn Profile
+</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.getElementById('tab-content-academic').style.display = 'none';
+  document.getElementById('tab-content-dataanalysis').style.display = 'none';
+
+  document.getElementById('tab-academic').style.background = 'transparent';
+  document.getElementById('tab-academic').style.color = '#8892A4';
+  document.getElementById('tab-academic').style.borderColor = '#1E2A45';
+
+  document.getElementById('tab-dataanalysis').style.background = 'transparent';
+  document.getElementById('tab-dataanalysis').style.color = '#8892A4';
+  document.getElementById('tab-dataanalysis').style.borderColor = '#1E2A45';
+
+  document.getElementById('tab-content-' + tab).style.display = 'flex';
+  document.getElementById('tab-content-' + tab).style.flexDirection = 'column';
+  document.getElementById('tab-content-' + tab).style.gap = '40px';
+
+  var activeBtn = document.getElementById('tab-' + tab);
+  activeBtn.style.background = 'rgba(0,212,200,0.12)';
+  activeBtn.style.color = '#00D4C8';
+  activeBtn.style.borderColor = '#00D4C8';
+}
+function showPage(name) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+
+  // Show target page
+  document.getElementById('page-' + name).classList.add('active');
+
+  // Highlight nav button
+  const buttons = document.querySelectorAll('.nav-links button');
+  const pageNames = ['home','about','projects','research','certifications','contact'];
+  const idx = pageNames.indexOf(name);
+  if (idx !== -1) buttons[idx].classList.add('active');
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
